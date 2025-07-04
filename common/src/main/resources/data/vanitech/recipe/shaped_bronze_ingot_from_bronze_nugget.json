@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": "vanitech:bronze_nugget"
+  },
+  "result": {
+    "id": "vanitech:bronze_ingot",
+    "count": 1
+  }
+}
