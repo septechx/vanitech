@@ -10,5 +10,6 @@
   "item.vanitech.bronze_pickaxe": "Bronze Pickaxe",
   "item.vanitech.bronze_axe": "Bronze Axe",
   "item.vanitech.bronze_shovel": "Bronze Shovel",
-  "item.vanitech.bronze_hoe": "Bronze Hoe"
+  "item.vanitech.bronze_hoe": "Bronze Hoe",
+  "gui.recipebook.toggleRecipes.alloying": "Alloying Recipes"
 }

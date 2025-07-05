@@ -10,5 +10,6 @@
   "item.vanitech.bronze_pickaxe": "Pico de Bronze",
   "item.vanitech.bronze_axe": "Hacha de Bronze",
   "item.vanitech.bronze_shovel": "Pala de Bronze",
-  "item.vanitech.bronze_hoe": "Azada de Bronze"
+  "item.vanitech.bronze_hoe": "Azada de Bronze",
+  "gui.recipebook.toggleRecipes.alloying": "Recetas de Aleación"
 }
