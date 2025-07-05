@@ -1,7 +1,6 @@
 package com.siesque.mixin;
 
 import com.siesque.blocks.entity.AlloyBlastFurnaceEntity;
-import com.siesque.blocks.entity.VanitechBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.MenuProvider;
@@ -37,18 +36,15 @@ public abstract class BlastFurnaceBlockEntityMixin extends AbstractFurnaceBlock 
 
     /**
      * @author septechx
-     * @reason Replace the default furnace ticker with the custom ticker taht supports AlloyBlastFurnaceEntity
+     * @reason Replace the default furnace ticker with the custom AlloyBlastFurnaceEntity.Ticker
      */
     @Overwrite
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createFurnaceTicker(level, blockEntityType, VanitechBlockEntityTypes.ALLOY_BLAST_FURNACE.get());
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+                                                                            BlockEntityType<T> blockEntityType) {
+        return new AlloyBlastFurnaceEntity.Ticker<>();
     }
 
-    @Inject(
-            method = "openContainer",
-            at = @At("HEAD"),
-            cancellable = true
-    )
+    @Inject(method = "openContainer", at = @At("HEAD"), cancellable = true)
     private void handleCustomContainer(Level level, BlockPos pos, Player player, CallbackInfo ci) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof AlloyBlastFurnaceEntity) {

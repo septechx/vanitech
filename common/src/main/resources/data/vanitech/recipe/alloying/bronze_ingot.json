@@ -1,0 +1,11 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": "minecraft:copper_ingot",
+  "secondary_ingredient": "minecraft:iron_ingot",
+  "result": {
+    "id": "vanitech:bronze_ingot",
+    "count": 2
+  },
+  "processing_time": 200,
+  "experience": 0.7
+}
