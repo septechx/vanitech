@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
-public class AlloyFurnaceScreen extends AbstractContainerScreen<AlloyFurnaceMenu> {
+public class AlloyBlastFurnaceScreen extends AbstractContainerScreen<AlloyBlastFurnaceMenu> {
     private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("vanitech",
             "textures/gui/alloy_furnace.png");
     private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath("vanitech",
@@ -16,7 +16,7 @@ public class AlloyFurnaceScreen extends AbstractContainerScreen<AlloyFurnaceMenu
     private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath("vanitech",
             "burn_progress");
 
-    public AlloyFurnaceScreen(AlloyFurnaceMenu menu, Inventory playerInventory, Component title) {
+    public AlloyBlastFurnaceScreen(AlloyBlastFurnaceMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 

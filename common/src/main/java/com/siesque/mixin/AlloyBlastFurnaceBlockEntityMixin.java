@@ -20,14 +20,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BlastFurnaceBlock.class)
-public abstract class BlastFurnaceBlockEntityMixin extends AbstractFurnaceBlock {
-    protected BlastFurnaceBlockEntityMixin(Properties properties) {
+public abstract class AlloyBlastFurnaceBlockEntityMixin extends AbstractFurnaceBlock {
+    protected AlloyBlastFurnaceBlockEntityMixin(Properties properties) {
         super(properties);
     }
 
     /**
      * @author septechx
-     * @reason Replace the BlastFurnaceEntity with the custom AlloyBlastFurnaceEntity
+     * @reason Replace the BlastFurnaceEntity with the custom
+     *         AlloyBlastFurnaceEntity
      */
     @Overwrite
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -36,11 +37,12 @@ public abstract class BlastFurnaceBlockEntityMixin extends AbstractFurnaceBlock 
 
     /**
      * @author septechx
-     * @reason Replace the default furnace ticker with the custom AlloyBlastFurnaceEntity.Ticker
+     * @reason Replace the default furnace ticker with the custom
+     *         AlloyBlastFurnaceEntity.Ticker
      */
     @Overwrite
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
-                                                                            BlockEntityType<T> blockEntityType) {
+            BlockEntityType<T> blockEntityType) {
         return new AlloyBlastFurnaceEntity.Ticker<>();
     }
 

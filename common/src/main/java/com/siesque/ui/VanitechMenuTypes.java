@@ -1,8 +1,8 @@
 package com.siesque.ui;
 
 import com.siesque.Vanitech;
-import com.siesque.ui.alloy_furnace.AlloyFurnaceMenu;
-import com.siesque.ui.alloy_furnace.AlloyFurnaceScreen;
+import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
+import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreen;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.registry.menu.MenuRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -18,16 +18,16 @@ public class VanitechMenuTypes {
     private static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(Vanitech.MOD_ID,
             Registries.MENU);
 
-    public static RegistrySupplier<MenuType<AlloyFurnaceMenu>> ALLOY_FURNACE;
+    public static RegistrySupplier<MenuType<AlloyBlastFurnaceMenu>> ALLOY_BLAST_FURNACE;
 
     public static void init() {
-        ALLOY_FURNACE = registerMenuType("alloy_furnace",
-                () -> new MenuType<>(AlloyFurnaceMenu::new, FeatureFlagSet.of()));
+        ALLOY_BLAST_FURNACE = registerMenuType("alloy_blast_furnace",
+                () -> new MenuType<>(AlloyBlastFurnaceMenu::new, FeatureFlagSet.of()));
 
         MENU_TYPES.register();
 
         ClientLifecycleEvent.CLIENT_STARTED.register(client -> {
-            MenuRegistry.registerScreenFactory(ALLOY_FURNACE.get(), AlloyFurnaceScreen::new);
+            MenuRegistry.registerScreenFactory(ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreen::new);
         });
     }
 

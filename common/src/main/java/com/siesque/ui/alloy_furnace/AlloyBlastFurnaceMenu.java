@@ -1,29 +1,26 @@
 package com.siesque.ui.alloy_furnace;
 
-import com.siesque.Vanitech;
 import com.siesque.ui.VanitechMenuTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-public class AlloyFurnaceMenu extends AbstractContainerMenu {
+public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
     public final Container container;
     public final ContainerData data;
 
-    public AlloyFurnaceMenu(int id, Inventory inventory) {
+    public AlloyBlastFurnaceMenu(int id, Inventory inventory) {
         this(id, inventory, new SimpleContainer(4), new SimpleContainerData(4));
     }
 
-    public AlloyFurnaceMenu(int id, Inventory inventory, Container container, ContainerData data) {
-        super(VanitechMenuTypes.ALLOY_FURNACE.get(), id);
+    public AlloyBlastFurnaceMenu(int id, Inventory inventory, Container container, ContainerData data) {
+        super(VanitechMenuTypes.ALLOY_BLAST_FURNACE.get(), id);
         checkContainerSize(container, 4);
         checkContainerDataCount(data, 4);
 
@@ -44,9 +41,8 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
 
         this.addSlot(new Slot(container, 0, 45, 18)); // Primary ingredient slot
         this.addSlot(new Slot(container, 1, 66, 18)); // Secondary ingredient slot
-        this.addSlot(new Slot(container, 2, 56, 53)); // Fuel slot
-        this.addSlot(new Slot(container, 3, 116, 35)); // Result slot
-
+        this.addSlot(new AlloyBlastFurnaceFuelSlot(this, container, 2, 56, 53)); // Fuel slot
+        this.addSlot(new FurnaceResultSlot(inventory.player, container, 3, 116, 35)); // Result slot
         this.addDataSlots(data);
     }
 
@@ -58,15 +54,21 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
             ItemStack originalStack = slot.getItem();
             itemstack = originalStack.copy();
 
-            if (index > 36) {
-                if (!moveItemStackTo(originalStack, 36, 40, false)) {
+            // Handle furnace slots (36-39)
+            if (index >= 36) {
+                if (!moveItemStackTo(originalStack, 0, 36, false)) {
                     return ItemStack.EMPTY;
-                } else if (index < 40) {
-                    if (!moveItemStackTo(originalStack, 0, 36, false)) {
-                        return ItemStack.EMPTY;
+                }
+            } else {
+                // Handle player inventory slots (0-35)
+                if (index >= 0 && index < 36) {
+                    // Try to move to ingredient slots first (36, 37)
+                    if (!moveItemStackTo(originalStack, 36, 38, false)) {
+                        // If that fails, try fuel slot (38)
+                        if (!moveItemStackTo(originalStack, 38, 39, false)) {
+                            return ItemStack.EMPTY;
+                        }
                     }
-                } else {
-                    Vanitech.LOGGER.error("Invalid slot index: {}", index);
                 }
             }
 
@@ -104,5 +106,13 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
         }
 
         return Mth.clamp((float) this.data.get(0) / i, 0.0F, 1.0F);
+    }
+
+    public boolean isFuel(ItemStack stack) {
+        return stack.is(Items.COAL) || stack.is(Items.CHARCOAL) || stack.is(Items.LAVA_BUCKET) ||
+                stack.is(Items.BLAZE_ROD) || stack.is(Items.COAL_BLOCK) ||
+                stack.is(Items.DRIED_KELP_BLOCK) || stack.is(Items.BAMBOO) || stack.is(Items.STICK) ||
+                stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_HOE) ||
+                stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_SWORD);
     }
 }

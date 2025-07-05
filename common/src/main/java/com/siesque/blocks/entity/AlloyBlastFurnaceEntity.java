@@ -6,7 +6,7 @@ import com.siesque.Vanitech;
 import com.siesque.recipe.VanitechRecipeTypes;
 import com.siesque.recipe.alloying.AlloyingRecipe;
 import com.siesque.recipe.alloying.AlloyingRecipeInput;
-import com.siesque.ui.alloy_furnace.AlloyFurnaceMenu;
+import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.*;
@@ -335,7 +335,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
 
     @Override
     protected @NotNull AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return new AlloyFurnaceMenu(containerId, inventory, this, this.data);
+        return new AlloyBlastFurnaceMenu(containerId, inventory, this, this.data);
     }
 
     @Override

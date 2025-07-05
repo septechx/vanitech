@@ -3,10 +3,9 @@
   "package": "com.siesque.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
-  "client": [
-  ],
+  "client": [],
   "mixins": [
-    "BlastFurnaceBlockEntityMixin"
+    "AlloyBlastFurnaceBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
