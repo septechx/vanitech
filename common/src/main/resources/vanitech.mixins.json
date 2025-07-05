@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "BlastFurnaceBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
