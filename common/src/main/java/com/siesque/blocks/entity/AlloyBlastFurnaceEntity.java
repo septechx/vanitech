@@ -67,9 +67,9 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     private static final short DEFAULT_LIT_TIME_REMAINING = 0;
     private static final short DEFAULT_LIT_TOTAL_TIME = 0;
 
-    private static final int[] SLOTS_FOR_UP = new int[] { 0, 1 };
-    private static final int[] SLOTS_FOR_DOWN = new int[] { 3, 2 };
-    private static final int[] SLOTS_FOR_SIDES = new int[] { 2 };
+    private static final int[] SLOTS_FOR_UP = new int[]{0, 1};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{3, 2};
+    private static final int[] SLOTS_FOR_SIDES = new int[]{2};
 
     private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Reference2IntOpenHashMap<>();
     private final RecipeManager.CachedCheck<AlloyingRecipeInput, AlloyingRecipe> quickCheck;
@@ -80,18 +80,13 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     protected final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
-            switch (index) {
-                case 0:
-                    return AlloyBlastFurnaceEntity.this.litTimeRemaining;
-                case 1:
-                    return AlloyBlastFurnaceEntity.this.litTotalTime;
-                case 2:
-                    return AlloyBlastFurnaceEntity.this.cookingTimer;
-                case 3:
-                    return AlloyBlastFurnaceEntity.this.cookingTotalTime;
-                default:
-                    return 0;
-            }
+            return switch (index) {
+                case 0 -> AlloyBlastFurnaceEntity.this.litTimeRemaining;
+                case 1 -> AlloyBlastFurnaceEntity.this.litTotalTime;
+                case 2 -> AlloyBlastFurnaceEntity.this.cookingTimer;
+                case 3 -> AlloyBlastFurnaceEntity.this.cookingTotalTime;
+                default -> 0;
+            };
         }
 
         @Override
@@ -253,7 +248,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
             AlloyingRecipeInput recipeInput = new AlloyingRecipeInput(primaryStack, secondaryStack);
             return furnace.quickCheck
                     .getRecipeFor(recipeInput, level)
-                    .map(recipeHolder -> recipeHolder.value().getProcessingTime())
+                    .map(recipeHolder -> recipeHolder.value().processingTime())
                     .orElse(BURN_TIME_STANDARD);
         }
         return BURN_TIME_STANDARD;
@@ -283,7 +278,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
         this.litTimeRemaining = valueInput.getShortOr("lit_time_remaining", DEFAULT_LIT_TIME_REMAINING);
         this.litTotalTime = valueInput.getShortOr("lit_total_time", DEFAULT_LIT_TOTAL_TIME);
         this.recipesUsed.clear();
-        this.recipesUsed.putAll((Map<? extends ResourceKey<Recipe<?>>, ? extends Integer>) valueInput
+        this.recipesUsed.putAll(valueInput
                 .read("RecipesUsed", RECIPES_USED_CODEC).orElse(Map.of()));
     }
 
@@ -367,6 +362,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
             return false;
         } else if (slot == SLOT_FUEL) {
             ItemStack itemStack = this.items.get(SLOT_FUEL);
+            assert this.level != null;
             return this.level.fuelValues().isFuel(stack) || stack.is(Items.BUCKET) && !itemStack.is(Items.BUCKET);
         } else {
             return true; // Allow any item in ingredient slots
@@ -405,13 +401,13 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     }
 
     public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 popVec) {
-        List<RecipeHolder<?>> list = Lists.<RecipeHolder<?>>newArrayList();
+        List<RecipeHolder<?>> list = Lists.newArrayList();
 
         for (Entry<ResourceKey<Recipe<?>>> entry : this.recipesUsed.reference2IntEntrySet()) {
-            level.recipeAccess().byKey((ResourceKey<Recipe<?>>) entry.getKey()).ifPresent(recipeHolder -> {
+            level.recipeAccess().byKey(entry.getKey()).ifPresent(recipeHolder -> {
                 list.add(recipeHolder);
                 createExperience(level, popVec, entry.getIntValue(),
-                        ((AlloyingRecipe) recipeHolder.value()).getExperience());
+                        ((AlloyingRecipe) recipeHolder.value()).experience());
             });
         }
 

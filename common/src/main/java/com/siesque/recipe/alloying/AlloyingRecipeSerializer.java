@@ -13,24 +13,24 @@ import org.jetbrains.annotations.NotNull;
 
 public class AlloyingRecipeSerializer implements RecipeSerializer<AlloyingRecipe> {
     public static final MapCodec<AlloyingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                    Ingredient.CODEC.fieldOf("primary_ingredient").forGetter(AlloyingRecipe::getPrimaryIngredient),
-                    Ingredient.CODEC.fieldOf("secondary_ingredient").forGetter(AlloyingRecipe::getSecondaryIngredient),
-                    ItemStack.CODEC.fieldOf("result").forGetter(AlloyingRecipe::getResult),
-                    Codec.INT.optionalFieldOf("processing_time", 200).forGetter(AlloyingRecipe::getProcessingTime),
-                    Codec.FLOAT.optionalFieldOf("experience", 0.0f).forGetter(AlloyingRecipe::getExperience))
+                    Ingredient.CODEC.fieldOf("primary_ingredient").forGetter(AlloyingRecipe::primaryIngredient),
+                    Ingredient.CODEC.fieldOf("secondary_ingredient").forGetter(AlloyingRecipe::secondaryIngredient),
+                    ItemStack.CODEC.fieldOf("result").forGetter(AlloyingRecipe::result),
+                    Codec.INT.optionalFieldOf("processing_time", 200).forGetter(AlloyingRecipe::processingTime),
+                    Codec.FLOAT.optionalFieldOf("experience", 0.0f).forGetter(AlloyingRecipe::experience))
             .apply(instance, AlloyingRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, AlloyingRecipe> STREAM_CODEC = StreamCodec.composite(
             Ingredient.CONTENTS_STREAM_CODEC,
-            AlloyingRecipe::getPrimaryIngredient,
+            AlloyingRecipe::primaryIngredient,
             Ingredient.CONTENTS_STREAM_CODEC,
-            AlloyingRecipe::getSecondaryIngredient,
+            AlloyingRecipe::secondaryIngredient,
             ItemStack.STREAM_CODEC,
-            AlloyingRecipe::getResult,
+            AlloyingRecipe::result,
             ByteBufCodecs.INT,
-            AlloyingRecipe::getProcessingTime,
+            AlloyingRecipe::processingTime,
             ByteBufCodecs.FLOAT,
-            AlloyingRecipe::getExperience,
+            AlloyingRecipe::experience,
             AlloyingRecipe::new);
 
     @Override

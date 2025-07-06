@@ -2,10 +2,11 @@ package com.siesque.recipe.alloying;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
+import org.jetbrains.annotations.NotNull;
 
 public record AlloyingRecipeInput(ItemStack primaryItem, ItemStack secondaryItem) implements RecipeInput {
     @Override
-    public ItemStack getItem(int slot) {
+    public @NotNull ItemStack getItem(int slot) {
         return switch (slot) {
             case 0 -> primaryItem;
             case 1 -> secondaryItem;
