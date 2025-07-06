@@ -8,15 +8,17 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
     public final Container container;
     public final ContainerData data;
+    protected Level level;
 
     public AlloyBlastFurnaceMenu(int id, Inventory inventory) {
         this(id, inventory, new SimpleContainer(4), new SimpleContainerData(4));
+        this.level = inventory.player.level();
     }
 
     public AlloyBlastFurnaceMenu(int id, Inventory inventory, Container container, ContainerData data) {
@@ -109,10 +111,6 @@ public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
     }
 
     public boolean isFuel(ItemStack stack) {
-        return stack.is(Items.COAL) || stack.is(Items.CHARCOAL) || stack.is(Items.LAVA_BUCKET) ||
-                stack.is(Items.BLAZE_ROD) || stack.is(Items.COAL_BLOCK) ||
-                stack.is(Items.DRIED_KELP_BLOCK) || stack.is(Items.BAMBOO) || stack.is(Items.STICK) ||
-                stack.is(Items.WOODEN_PICKAXE) || stack.is(Items.WOODEN_AXE) || stack.is(Items.WOODEN_HOE) ||
-                stack.is(Items.WOODEN_SHOVEL) || stack.is(Items.WOODEN_SWORD);
+        return this.level.fuelValues().isFuel(stack);
     }
 }

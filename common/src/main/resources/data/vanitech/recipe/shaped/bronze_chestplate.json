@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "B B",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": {
+            "item": "vanitech:bronze_ingot"
+        }
+    },
+    "result": {
+        "item": "vanitech:bronze_chestplate"
+    }
+}
