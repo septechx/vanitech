@@ -8,16 +8,6 @@ architectury {
     minecraft = project.minecraft_version
 }
 
-// Configure resolution strategy for changing versions
-allprojects {
-    configurations.all {
-        resolutionStrategy {
-            cacheChangingModulesFor 0, 'seconds'
-            cacheDynamicVersionsFor 0, 'seconds'
-        }
-    }
-}
-
 allprojects {
     group = rootProject.maven_group
     version = rootProject.mod_version
