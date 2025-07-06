@@ -3,7 +3,7 @@
   "id": "vanitech",
   "version": "${version}",
   "name": "Vanitech",
-  "description": "Vani-tech mod",
+  "description": "Vanilla-Tech mod that adds a variety of new blocks, items, and features to enhance the vanilla Minecraft experience.",
   "authors": [
     "septechx"
   ],
@@ -27,9 +27,10 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.14",
-    "minecraft": "~1.21.5",
+    "minecraft": "~1.21.7",
     "java": ">=21",
-    "architectury": ">=16.1.4"
+    "architectury": ">=17.0.6",
+    "fabric-api": ">=0.128.2+1.21.7"
   },
   "suggests": {}
 }

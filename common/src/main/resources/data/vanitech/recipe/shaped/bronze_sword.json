@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " B ",
-        " B ",
-        " S "
-    ],
-    "key": {
-        "B": {
-            "item": "vanitech:bronze_ingot"
-        },
-        "S": {
-            "item": "minecraft:stick"
-        }
-    },
-    "result": {
-        "item": "vanitech:bronze_sword"
-    }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    " B ",
+    " S "
+  ],
+  "key": {
+    "B": "vanitech:bronze_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "vanitech:bronze_sword",
+    "count": 1
+  }
 }

@@ -8,6 +8,16 @@ architectury {
     minecraft = project.minecraft_version
 }
 
+// Configure resolution strategy for changing versions
+allprojects {
+    configurations.all {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+            cacheDynamicVersionsFor 0, 'seconds'
+        }
+    }
+}
+
 allprojects {
     group = rootProject.maven_group
     version = rootProject.mod_version
@@ -42,7 +52,7 @@ subprojects {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.layered {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_mappings_version}:2025.06.15@zip")
+            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_minecraft_version}:${rootProject.parchment_mappings_version}@zip")
         }
     }
 

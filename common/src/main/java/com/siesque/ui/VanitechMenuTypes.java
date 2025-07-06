@@ -4,6 +4,7 @@ import com.siesque.Vanitech;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreen;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
+import dev.architectury.platform.Platform;
 import dev.architectury.registry.menu.MenuRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -26,9 +27,11 @@ public class VanitechMenuTypes {
 
         MENU_TYPES.register();
 
-        ClientLifecycleEvent.CLIENT_STARTED.register(client -> {
-            MenuRegistry.registerScreenFactory(ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreen::new);
-        });
+        if (Platform.isFabric()) {
+            ClientLifecycleEvent.CLIENT_STARTED.register(client -> {
+                MenuRegistry.registerScreenFactory(ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreen::new);
+            });
+        }
     }
 
     private static <T extends MenuType<?>> RegistrySupplier<T> registerMenuType(String name, Supplier<T> menuType) {

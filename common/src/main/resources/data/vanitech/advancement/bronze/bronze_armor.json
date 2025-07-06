@@ -1,0 +1,78 @@
+{
+  "display": {
+    "icon": {
+      "id": "vanitech:bronze_helmet",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.vanitech.bronze_age.bronze_armor"
+    },
+    "description": {
+      "translate": "advancement.vanitech.bronze_age.bronze_armor.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "vanitech:bronze/alloy_bronze",
+  "criteria": {
+    "has_bronze_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:bronze_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "has_bronze_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:bronze_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_bronze_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:bronze_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "has_bronze_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:bronze_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bronze_helmet",
+      "has_bronze_chestplate",
+      "has_bronze_leggings",
+      "has_bronze_boots"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -11,5 +11,11 @@
   "item.vanitech.bronze_axe": "Hacha de Bronze",
   "item.vanitech.bronze_shovel": "Pala de Bronze",
   "item.vanitech.bronze_hoe": "Azada de Bronze",
-  "gui.recipebook.toggleRecipes.alloying": "Recetas de Aleación"
+  "gui.recipebook.toggleRecipes.alloying": "Recetas de Aleación",
+  "advancement.vanitech.bronze_age.alloy_bronze": "Edad de Bronze",
+  "advancement.vanitech.bronze_age.alloy_bronze.desc": "Obtén un lingote de bronce",
+  "advancement.vanitech.bronze_age.bronze_armor": "Defensor de Bronze",
+  "advancement.vanitech.bronze_age.bronze_armor.desc": "Forja una pieza de armadura de bronce",
+  "advancement.vanitech.bronze_age.bronze_tools": "Edad de Bronze",
+  "advancement.vanitech.bronze_age.bronze_tools.desc": "Forja una herramienta de bronce"
 }

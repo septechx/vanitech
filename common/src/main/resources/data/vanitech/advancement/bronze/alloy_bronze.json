@@ -1,0 +1,53 @@
+{
+  "display": {
+    "icon": {
+      "id": "vanitech:bronze_ingot",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.vanitech.bronze_age.alloy_bronze"
+    },
+    "description": {
+      "translate": "advancement.vanitech.bronze_age.alloy_bronze.desc"
+    },
+    "background": "vanitech:block/bronze_block",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/smelt_iron",
+  "criteria": {
+    "has_bronze_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:bronze_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bronze_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vanitech:bronze_ingot",
+      "vanitech:bronze_sword",
+      "vanitech:bronze_pickaxe",
+      "vanitech:bronze_axe",
+      "vanitech:bronze_shovel",
+      "vanitech:bronze_hoe",
+      "vanitech:bronze_helmet",
+      "vanitech:bronze_chestplate",
+      "vanitech:bronze_leggings",
+      "vanitech:bronze_boots"
+    ]
+  },
+  "sends_telemetry_event": true
+}
