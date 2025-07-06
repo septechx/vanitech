@@ -6,14 +6,11 @@
         " S "
     ],
     "key": {
-        "B": {
-            "item": "vanitech:bronze_ingot"
-        },
-        "S": {
-            "item": "minecraft:stick"
-        }
+        "B": "vanitech:bronze_ingot",
+        "S": "minecraft:stick"
     },
     "result": {
-        "item": "vanitech:bronze_pickaxe"
+        "id": "vanitech:bronze_pickaxe",
+        "count": 1
     }
 }

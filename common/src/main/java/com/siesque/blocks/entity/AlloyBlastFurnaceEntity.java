@@ -9,8 +9,10 @@ import com.siesque.recipe.alloying.AlloyingRecipeInput;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import net.minecraft.core.*;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -38,6 +40,8 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -270,28 +274,28 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
+    protected void loadAdditional(ValueInput valueInput) {
+        super.loadAdditional(valueInput);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, this.items, registries);
-        this.cookingTimer = tag.getShortOr("cooking_time_spent", DEFAULT_COOKING_TIMER);
-        this.cookingTotalTime = tag.getShortOr("cooking_total_time", DEFAULT_COOKING_TOTAL_TIME);
-        this.litTimeRemaining = tag.getShortOr("lit_time_remaining", DEFAULT_LIT_TIME_REMAINING);
-        this.litTotalTime = tag.getShortOr("lit_total_time", DEFAULT_LIT_TOTAL_TIME);
+        ContainerHelper.loadAllItems(valueInput, this.items);
+        this.cookingTimer = valueInput.getShortOr("cooking_time_spent", DEFAULT_COOKING_TIMER);
+        this.cookingTotalTime = valueInput.getShortOr("cooking_total_time", DEFAULT_COOKING_TOTAL_TIME);
+        this.litTimeRemaining = valueInput.getShortOr("lit_time_remaining", DEFAULT_LIT_TIME_REMAINING);
+        this.litTotalTime = valueInput.getShortOr("lit_total_time", DEFAULT_LIT_TOTAL_TIME);
         this.recipesUsed.clear();
-        this.recipesUsed.putAll((Map<? extends ResourceKey<Recipe<?>>, ? extends Integer>) tag
+        this.recipesUsed.putAll((Map<? extends ResourceKey<Recipe<?>>, ? extends Integer>) valueInput
                 .read("RecipesUsed", RECIPES_USED_CODEC).orElse(Map.of()));
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.putShort("cooking_time_spent", (short) this.cookingTimer);
-        tag.putShort("cooking_total_time", (short) this.cookingTotalTime);
-        tag.putShort("lit_time_remaining", (short) this.litTimeRemaining);
-        tag.putShort("lit_total_time", (short) this.litTotalTime);
-        ContainerHelper.saveAllItems(tag, this.items, registries);
-        tag.store("RecipesUsed", RECIPES_USED_CODEC, this.recipesUsed);
+    protected void saveAdditional(ValueOutput valueOutput) {
+        super.saveAdditional(valueOutput);
+        valueOutput.putShort("cooking_time_spent", (short) this.cookingTimer);
+        valueOutput.putShort("cooking_total_time", (short) this.cookingTotalTime);
+        valueOutput.putShort("lit_time_remaining", (short) this.litTimeRemaining);
+        valueOutput.putShort("lit_total_time", (short) this.litTotalTime);
+        ContainerHelper.saveAllItems(valueOutput, this.items);
+        valueOutput.store("RecipesUsed", RECIPES_USED_CODEC, this.recipesUsed);
     }
 
     protected int getBurnDuration(Level level, ItemStack stack) {
@@ -388,7 +392,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     }
 
     public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
-        List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.serverLevel(), player.position());
+        List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.level(), player.position());
         player.awardRecipes(list);
 
         for (RecipeHolder<?> recipeHolder : list) {

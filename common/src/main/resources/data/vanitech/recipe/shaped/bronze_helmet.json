@@ -2,15 +2,13 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "BBB",
-        "B B",
-        "   "
+        "B B"
     ],
     "key": {
-        "B": {
-            "item": "vanitech:bronze_ingot"
-        }
+        "B": "vanitech:bronze_ingot"
     },
     "result": {
-        "item": "vanitech:bronze_helmet"
+        "id": "vanitech:bronze_helmet",
+        "count": 1
     }
 }

@@ -6,11 +6,10 @@
         "B B"
     ],
     "key": {
-        "B": {
-            "item": "vanitech:bronze_ingot"
-        }
+        "B": "vanitech:bronze_ingot"
     },
     "result": {
-        "item": "vanitech:bronze_leggings"
+        "id": "vanitech:bronze_leggings",
+        "count": 1
     }
 }

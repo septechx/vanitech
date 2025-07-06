@@ -42,7 +42,7 @@ subprojects {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.layered {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:2025.06.15@zip")
+            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_mappings_version}:2025.06.15@zip")
         }
     }
 

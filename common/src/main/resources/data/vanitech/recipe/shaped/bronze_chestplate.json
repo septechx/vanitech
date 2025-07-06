@@ -6,11 +6,10 @@
         "BBB"
     ],
     "key": {
-        "B": {
-            "item": "vanitech:bronze_ingot"
-        }
+        "B": "vanitech:bronze_ingot"
     },
     "result": {
-        "item": "vanitech:bronze_chestplate"
+        "id": "vanitech:bronze_chestplate",
+        "count": 1
     }
 }

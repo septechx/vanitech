@@ -2,7 +2,7 @@ package com.siesque.ui.alloy_furnace;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -24,17 +24,17 @@ public class AlloyBlastFurnaceScreen extends AbstractContainerScreen<AlloyBlastF
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int x = this.leftPos;
         int y = this.topPos;
-        guiGraphics.blit(RenderType::guiTextured, BACKGROUND,
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND,
                 x, y, 0, 0, this.imageWidth, this.imageHeight, 176, 166);
 
         if (this.menu.isLit()) {
             int l = Mth.ceil(this.menu.getLitProgress() * 13.0F) + 1;
-            guiGraphics.blitSprite(RenderType::guiTextured, LIT_PROGRESS_SPRITE,
+            guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, LIT_PROGRESS_SPRITE,
                     14, 14, 0, 14 - l, x + 56, y + 36 + 14 - l, 14, l);
         }
 
         int l = Mth.ceil(this.menu.getBurnProgress() * 24.0F);
-        guiGraphics.blitSprite(RenderType::guiTextured, BURN_PROGRESS_SPRITE,
+        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, BURN_PROGRESS_SPRITE,
                 24, 16, 0, 0, x + 79, y + 34, l, 16);
     }
 

@@ -28,6 +28,7 @@ public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
 
         this.container = container;
         this.data = data;
+        this.level = inventory.player.level();
 
         // Player inventory
         for (int row = 0; row < 3; ++row) {
