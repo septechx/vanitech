@@ -13,9 +13,5 @@
   "item.vanitech.bronze_hoe": "Bronze Hoe",
   "gui.recipebook.toggleRecipes.alloying": "Alloying Recipes",
   "advancement.vanitech.bronze_age.alloy_bronze": "Bronze Age",
-  "advancement.vanitech.bronze_age.alloy_bronze.desc": "Obtain a bronze ingot",
-  "advancement.vanitech.bronze_age.bronze_armor": "Bronze Defender",
-  "advancement.vanitech.bronze_age.bronze_armor.desc": "Craft a piece of bronze armor",
-  "advancement.vanitech.bronze_age.bronze_tools": "Bronze Age",
-  "advancement.vanitech.bronze_age.bronze_tools.desc": "Craft a bronze tool"
+  "advancement.vanitech.bronze_age.alloy_bronze.desc": "Obtain a bronze ingot"
 }
