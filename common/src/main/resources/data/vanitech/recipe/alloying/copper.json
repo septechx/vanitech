@@ -1,0 +1,16 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": [
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:raw_copper"
+  ],
+  "secondary_ingredient": "#minecraft:sand",
+  "result": {
+    "id": "minecraft:copper_ingot",
+    "count": 2
+  },
+  "processing_time": 100,
+  "experience": 0.7,
+  "blasting": true
+}

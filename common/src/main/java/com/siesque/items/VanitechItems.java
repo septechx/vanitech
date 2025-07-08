@@ -34,9 +34,12 @@ public class VanitechItems {
     public static RegistrySupplier<Item> BRONZE_LEGGINGS;
     public static RegistrySupplier<Item> BRONZE_BOOTS;
 
+    public static RegistrySupplier<Item> ENDER_KEY;
+
     public static void init() {
         BRONZE_INGOT = item("bronze_ingot", CreativeModeTabs.INGREDIENTS);
         BRONZE_NUGGET = item("bronze_nugget", CreativeModeTabs.INGREDIENTS);
+        ENDER_KEY = item("ender_key", CreativeModeTabs.TOOLS_AND_UTILITIES);
 
         BRONZE_BLOCK = block("bronze_block", VanitechBlocks.BRONZE_BLOCK, CreativeModeTabs.BUILDING_BLOCKS);
 

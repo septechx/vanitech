@@ -15,7 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public record AlloyingRecipe(Ingredient primaryIngredient, Ingredient secondaryIngredient, ItemStack result,
-                             int processingTime, float experience) implements Recipe<AlloyingRecipeInput> {
+                             int processingTime, float experience,
+                             boolean blasting) implements Recipe<AlloyingRecipeInput> {
 
     @Override
     public boolean matches(AlloyingRecipeInput input, Level level) {
@@ -45,6 +46,9 @@ public record AlloyingRecipe(Ingredient primaryIngredient, Ingredient secondaryI
 
     @Override
     public @NotNull RecipeBookCategory recipeBookCategory() {
+        if (blasting) {
+            return VanitechRecipeBookCategories.BLASTING.get();
+        }
         return VanitechRecipeBookCategories.ALLOYING.get();
     }
 

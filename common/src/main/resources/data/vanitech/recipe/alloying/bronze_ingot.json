@@ -1,7 +1,15 @@
 {
   "type": "vanitech:alloying",
-  "primary_ingredient": "#vanitech:copper",
-  "secondary_ingredient": "#vanitech:iron",
+  "primary_ingredient": [
+    "minecraft:copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:raw_copper"
+  ],
+  "secondary_ingredient": [
+    "minecraft:iron_ore",
+    "minecraft:deepslate_iron_ore",
+    "minecraft:raw_iron"
+  ],
   "result": {
     "id": "vanitech:bronze_ingot",
     "count": 2

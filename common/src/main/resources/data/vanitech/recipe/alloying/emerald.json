@@ -1,0 +1,15 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": [
+    "minecraft:emerald_ore",
+    "minecraft:deepslate_emerald_ore"
+  ],
+  "secondary_ingredient": "#minecraft:sand",
+  "result": {
+    "id": "minecraft:emerald",
+    "count": 2
+  },
+  "processing_time": 100,
+  "experience": 0.7,
+  "blasting": true
+}

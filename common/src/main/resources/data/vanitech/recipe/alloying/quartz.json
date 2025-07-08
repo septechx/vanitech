@@ -1,0 +1,12 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": "minecraft:nether_quartz_ore",
+  "secondary_ingredient": "#minecraft:sand",
+  "result": {
+    "id": "minecraft:quartz",
+    "count": 2
+  },
+  "processing_time": 100,
+  "experience": 0.7,
+  "blasting": true
+}

@@ -1,0 +1,16 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": [
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+    "minecraft:raw_gold"
+  ],
+  "secondary_ingredient": "#minecraft:sand",
+  "result": {
+    "id": "minecraft:gold_ingot",
+    "count": 2
+  },
+  "processing_time": 100,
+  "experience": 0.7,
+  "blasting": true
+}

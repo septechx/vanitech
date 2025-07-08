@@ -1,0 +1,17 @@
+{
+  "type": "vanitech:alloying",
+  "primary_ingredient": [
+    "vanitech:bronze_helmet",
+    "vanitech:bronze_chestplate",
+    "vanitech:bronze_leggings",
+    "vanitech:bronze_boots"
+  ],
+  "secondary_ingredient": "#minecraft:sand",
+  "result": {
+    "id": "vanitech:bronze_ingot",
+    "count": 1
+  },
+  "processing_time": 100,
+  "experience": 0.7,
+  "blasting": true
+}

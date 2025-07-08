@@ -17,7 +17,8 @@ public class AlloyingRecipeSerializer implements RecipeSerializer<AlloyingRecipe
                     Ingredient.CODEC.fieldOf("secondary_ingredient").forGetter(AlloyingRecipe::secondaryIngredient),
                     ItemStack.CODEC.fieldOf("result").forGetter(AlloyingRecipe::result),
                     Codec.INT.optionalFieldOf("processing_time", 200).forGetter(AlloyingRecipe::processingTime),
-                    Codec.FLOAT.optionalFieldOf("experience", 0.0f).forGetter(AlloyingRecipe::experience))
+                    Codec.FLOAT.optionalFieldOf("experience", 0.0f).forGetter(AlloyingRecipe::experience),
+                    Codec.BOOL.optionalFieldOf("blasting", false).forGetter(AlloyingRecipe::blasting))
             .apply(instance, AlloyingRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, AlloyingRecipe> STREAM_CODEC = StreamCodec.composite(
@@ -31,6 +32,8 @@ public class AlloyingRecipeSerializer implements RecipeSerializer<AlloyingRecipe
             AlloyingRecipe::processingTime,
             ByteBufCodecs.FLOAT,
             AlloyingRecipe::experience,
+            ByteBufCodecs.BOOL,
+            AlloyingRecipe::blasting,
             AlloyingRecipe::new);
 
     @Override

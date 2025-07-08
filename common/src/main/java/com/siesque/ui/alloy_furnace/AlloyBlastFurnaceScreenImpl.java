@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.Items;
 
 import java.util.Arrays;
 
@@ -22,7 +23,12 @@ public final class AlloyBlastFurnaceScreenImpl {
                                 VanitechItems.BRONZE_INGOT
                                         .get(),
                                 VanitechRecipeBookCategories.ALLOYING
-                                        .get())
+                                        .get()
+                        ),
+                        new RecipeBookComponent.TabInfo(
+                                Items.IRON_INGOT,
+                                VanitechRecipeBookCategories.BLASTING.get()
+                        )
                 ));
     }
 }
