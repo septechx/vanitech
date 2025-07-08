@@ -39,7 +39,6 @@ public class VanitechItems {
     public static void init() {
         BRONZE_INGOT = item("bronze_ingot", CreativeModeTabs.INGREDIENTS);
         BRONZE_NUGGET = item("bronze_nugget", CreativeModeTabs.INGREDIENTS);
-        ENDER_KEY = item("ender_key", CreativeModeTabs.TOOLS_AND_UTILITIES);
 
         BRONZE_BLOCK = block("bronze_block", VanitechBlocks.BRONZE_BLOCK, CreativeModeTabs.BUILDING_BLOCKS);
 
@@ -54,7 +53,21 @@ public class VanitechItems {
         BRONZE_LEGGINGS = armor("bronze_leggings", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.LEGGINGS);
         BRONZE_BOOTS = armor("bronze_boots", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.BOOTS);
 
+        ENDER_KEY = custom("ender_key", EnderKeyItem.class, CreativeModeTabs.TOOLS_AND_UTILITIES, Rarity.RARE);
+
         ITEMS.register();
+    }
+
+    public static RegistrySupplier<Item> custom(String name, Class<? extends Item> itemClass,
+                                                ResourceKey<CreativeModeTab> tab, Rarity rarity) {
+        return registerItem(name, () -> {
+            try {
+                return itemClass.getConstructor(Item.Properties.class).newInstance(baseProperties(name).arch$tab(tab).rarity(rarity));
+            } catch (Exception e) {
+                Vanitech.LOGGER.error("Failed to create item: {}", name);
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public static RegistrySupplier<Item> item(String name, ResourceKey<CreativeModeTab> tab) {

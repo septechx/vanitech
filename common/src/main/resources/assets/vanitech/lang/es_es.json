@@ -11,7 +11,10 @@
   "item.vanitech.bronze_axe": "Hacha de Bronze",
   "item.vanitech.bronze_shovel": "Pala de Bronze",
   "item.vanitech.bronze_hoe": "Azada de Bronze",
+  "item.vanitech.ender_key": "Llave del End",
   "gui.recipebook.toggleRecipes.alloying": "Recetas de Aleación",
-  "advancement.vanitech.bronze_age.alloy_bronze": "Edad de Bronze",
-  "advancement.vanitech.bronze_age.alloy_bronze.desc": "Obtén un lingote de bronce"
+  "advancement.vanitech.alloy_bronze": "Edad de Bronze",
+  "advancement.vanitech.alloy_bronze.desc": "Obtén un lingote de bronce",
+  "advancement.vanitech.obtain_ender_key": "Obtén una Llave del End",
+  "advancement.vanitech.obtain_ender_key.desc": "Obtén una Llave del End para acceder al End"
 }

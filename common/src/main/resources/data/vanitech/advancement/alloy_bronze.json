@@ -5,12 +5,11 @@
       "count": 1
     },
     "title": {
-      "translate": "advancement.vanitech.bronze_age.alloy_bronze"
+      "translate": "advancement.vanitech.alloy_bronze"
     },
     "description": {
-      "translate": "advancement.vanitech.bronze_age.alloy_bronze.desc"
+      "translate": "advancement.vanitech.alloy_bronze.desc"
     },
-    "background": "vanitech:block/bronze_block",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

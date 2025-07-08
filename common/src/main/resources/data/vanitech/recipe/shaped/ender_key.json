@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "SEY",
+    " W "
+  ],
+  "key": {
+    "P": "minecraft:prismarine_shard",
+    "S": "minecraft:echo_shard",
+    "E": "minecraft:ender_eye",
+    "W": "minecraft:wind_charge",
+    "Y": "minecraft:emerald"
+  },
+  "result": {
+    "id": "vanitech:ender_key",
+    "count": 1
+  }
+}

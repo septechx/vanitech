@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "vanitech:ender_key",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancement.vanitech.obtain_ender_key"
+    },
+    "description": {
+      "translate": "advancement.vanitech.obtain_ender_key.desc"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/follow_ender_eye",
+  "criteria": {
+    "has_key": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vanitech:ender_key"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_key"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
