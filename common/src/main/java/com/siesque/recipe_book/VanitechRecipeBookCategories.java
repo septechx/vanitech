@@ -11,11 +11,9 @@ public class VanitechRecipeBookCategories {
             .create(Vanitech.MOD_ID, Registries.RECIPE_BOOK_CATEGORY);
 
     public static RegistrySupplier<RecipeBookCategory> ALLOYING;
-    public static RegistrySupplier<RecipeBookCategory> BLASTING;
 
     public static void init() {
         ALLOYING = category("alloying");
-        BLASTING = category("blasting");
 
         RECIPE_BOOK_CATEGORIES.register();
     }

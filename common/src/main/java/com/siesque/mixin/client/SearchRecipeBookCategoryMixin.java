@@ -21,8 +21,7 @@ public abstract class SearchRecipeBookCategoryMixin {
     )
     private static void modifyBlastFurnaceCategories(Args args) {
         RecipeBookCategory[] modified = new RecipeBookCategory[]{
-                VanitechRecipeBookCategories.ALLOYING.get(),
-                VanitechRecipeBookCategories.BLASTING.get()
+                VanitechRecipeBookCategories.ALLOYING.get()
         };
 
         args.set(2, modified);
