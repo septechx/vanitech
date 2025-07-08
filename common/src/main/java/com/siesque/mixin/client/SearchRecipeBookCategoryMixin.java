@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(SearchRecipeBookCategory.class)
 public abstract class SearchRecipeBookCategoryMixin {
-
     @ModifyArgs(
             method = "<clinit>",
             at = @At(
@@ -21,16 +20,11 @@ public abstract class SearchRecipeBookCategoryMixin {
             remap = true
     )
     private static void modifyBlastFurnaceCategories(Args args) {
-        // Original categories array (third argument)
-        RecipeBookCategory[] original = args.get(2);
-
-        // Create new array with extra slot
         RecipeBookCategory[] modified = new RecipeBookCategory[]{
                 VanitechRecipeBookCategories.ALLOYING.get(),
                 VanitechRecipeBookCategories.BLASTING.get()
         };
-        
+
         args.set(2, modified);
     }
 }
-

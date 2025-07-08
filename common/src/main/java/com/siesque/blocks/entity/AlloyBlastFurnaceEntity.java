@@ -6,6 +6,7 @@ import com.siesque.Vanitech;
 import com.siesque.recipe.VanitechRecipeTypes;
 import com.siesque.recipe.alloying.AlloyingRecipe;
 import com.siesque.recipe.alloying.AlloyingRecipeInput;
+import net.minecraft.world.item.crafting.BlastingRecipe;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
@@ -67,12 +68,13 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     private static final short DEFAULT_LIT_TIME_REMAINING = 0;
     private static final short DEFAULT_LIT_TOTAL_TIME = 0;
 
-    private static final int[] SLOTS_FOR_UP = new int[]{0, 1};
-    private static final int[] SLOTS_FOR_DOWN = new int[]{3, 2};
-    private static final int[] SLOTS_FOR_SIDES = new int[]{2};
+    private static final int[] SLOTS_FOR_UP = new int[] { 0 };
+    private static final int[] SLOTS_FOR_DOWN = new int[] { 3, 2 };
+    private static final int[] SLOTS_FOR_NORTH = new int[] { 1 };
+    private static final int[] SLOTS_FOR_SIDES = new int[] { 2 };
 
     private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Reference2IntOpenHashMap<>();
-    private final RecipeManager.CachedCheck<AlloyingRecipeInput, AlloyingRecipe> quickCheck;
+    private final RecipeManager.CachedCheck<AlloyingRecipeInput, AlloyingRecipe> alloyingCheck;
     int litTimeRemaining;
     int litTotalTime;
     int cookingTimer;
@@ -116,7 +118,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     public AlloyBlastFurnaceEntity(BlockPos pos, BlockState blockState) {
         super(VanitechBlockEntityTypes.ALLOY_BLAST_FURNACE.get(), pos, blockState);
         this.items = NonNullList.withSize(INVENTORY_SIZE, ItemStack.EMPTY);
-        this.quickCheck = RecipeManager.createCheck(VanitechRecipeTypes.ALLOYING.get());
+        this.alloyingCheck = RecipeManager.createCheck(VanitechRecipeTypes.ALLOYING.get());
         Vanitech.LOGGER.debug("AlloyBlastFurnaceEntity created at {} with state {}", pos, blockState);
     }
 
@@ -137,7 +139,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
             AlloyingRecipeInput recipeInput = new AlloyingRecipeInput(primaryStack, secondaryStack);
             RecipeHolder<AlloyingRecipe> recipeHolder;
             if (bl3) {
-                recipeHolder = furnace.quickCheck.getRecipeFor(recipeInput, level).orElse(null);
+                recipeHolder = furnace.alloyingCheck.getRecipeFor(recipeInput, level).orElse(null);
             } else {
                 recipeHolder = null;
             }
@@ -246,7 +248,7 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
         ItemStack secondaryStack = furnace.getItem(SLOT_SECONDARY_INGREDIENT);
         if (!primaryStack.isEmpty() && !secondaryStack.isEmpty()) {
             AlloyingRecipeInput recipeInput = new AlloyingRecipeInput(primaryStack, secondaryStack);
-            return furnace.quickCheck
+            return furnace.alloyingCheck
                     .getRecipeFor(recipeInput, level)
                     .map(recipeHolder -> recipeHolder.value().processingTime())
                     .orElse(BURN_TIME_STANDARD);
@@ -301,13 +303,41 @@ public class AlloyBlastFurnaceEntity extends BaseContainerBlockEntity
     public int @NotNull [] getSlotsForFace(Direction side) {
         if (side == Direction.DOWN) {
             return SLOTS_FOR_DOWN;
+        } else if (side == Direction.UP) {
+            return SLOTS_FOR_UP;
+        } else if (side == Direction.NORTH) {
+            return SLOTS_FOR_NORTH;
         } else {
-            return side == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
+            return SLOTS_FOR_SIDES;
         }
     }
 
     @Override
     public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+        if (direction == null) {
+            return this.canPlaceItem(index, itemStack);
+        }
+
+        // Primary ingredient (slot 0) can only be placed from above
+        if (index == SLOT_PRIMARY_INGREDIENT && direction != Direction.UP) {
+            return false;
+        }
+
+        // Secondary ingredient (slot 1) can only be placed from the back (NORTH)
+        if (index == SLOT_SECONDARY_INGREDIENT && direction != Direction.NORTH) {
+            return false;
+        }
+
+        // Fuel (slot 2) can be placed from any side except UP and NORTH
+        if (index == SLOT_FUEL && (direction == Direction.UP || direction == Direction.NORTH)) {
+            return false;
+        }
+
+        // Result slot (slot 3) cannot receive items from any face
+        if (index == SLOT_RESULT) {
+            return false;
+        }
+
         return this.canPlaceItem(index, itemStack);
     }
 
