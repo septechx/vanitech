@@ -3,7 +3,7 @@ package com.siesque.neoforge;
 import com.siesque.Vanitech;
 import com.siesque.neoforge.blocks.entities.VanitechBlockEntityTypesNeoForge;
 import com.siesque.ui.VanitechMenuTypes;
-import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreen;
+import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreenImpl;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -21,7 +21,7 @@ public final class VanitechNeoForge {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
-            event.register(VanitechMenuTypes.ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreen::new);
+            event.register(VanitechMenuTypes.ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreenImpl::screen);
         }
     }
 }

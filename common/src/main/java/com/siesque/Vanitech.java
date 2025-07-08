@@ -2,6 +2,7 @@ package com.siesque;
 
 import com.siesque.blocks.VanitechBlocks;
 import com.siesque.items.VanitechItems;
+import com.siesque.recipe.VanitechRecipeDisplayTypes;
 import com.siesque.recipe.VanitechRecipeSerializers;
 import com.siesque.recipe.VanitechRecipeTypes;
 import com.siesque.recipe_book.VanitechRecipeBookCategories;
@@ -17,6 +18,7 @@ public final class Vanitech {
         VanitechItems.init();
         VanitechRecipeTypes.init();
         VanitechRecipeSerializers.init();
+        VanitechRecipeDisplayTypes.init();
         VanitechRecipeBookCategories.init();
         VanitechMenuTypes.init();
     }

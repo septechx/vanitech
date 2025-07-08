@@ -1,6 +1,11 @@
 {
   "type": "minecraft:smelting",
-  "ingredient": "vanitech:bronze_boots",
+  "ingredient": [
+    "vanitech:bronze_boots",
+    "vanitech:bronze_leggings",
+    "vanitech:bronze_chestplate",
+    "vanitech:bronze_helmet"
+  ],
   "result": {
     "id": "vanitech:bronze_nugget",
     "count": 1

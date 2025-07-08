@@ -7,6 +7,10 @@ architectury {
     neoForge()
 }
 
+loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+}
+
 configurations {
     common {
         canBeResolved = true
@@ -56,4 +60,6 @@ shadowJar {
 
 remapJar {
     inputFile.set shadowJar.archiveFile
+
+    atAccessWideners.add "vanitech.accesswidener"
 }

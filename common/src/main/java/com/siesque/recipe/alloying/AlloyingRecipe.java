@@ -5,7 +5,10 @@ import com.siesque.recipe.VanitechRecipeTypes;
 import com.siesque.recipe_book.VanitechRecipeBookCategories;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,5 +46,15 @@ public record AlloyingRecipe(Ingredient primaryIngredient, Ingredient secondaryI
     @Override
     public @NotNull RecipeBookCategory recipeBookCategory() {
         return VanitechRecipeBookCategories.ALLOYING.get();
+    }
+
+    @Override
+    public @NotNull List<RecipeDisplay> display() {
+        return List.of(
+                new AlloyingRecipeDisplay(
+                        this.primaryIngredient.display(),
+                        this.secondaryIngredient.display(),
+                        new SlotDisplay.ItemStackSlotDisplay(this.result),
+                        new SlotDisplay.ItemSlotDisplay(Items.GRASS_BLOCK)));
     }
 }

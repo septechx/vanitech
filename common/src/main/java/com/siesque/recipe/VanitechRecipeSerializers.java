@@ -23,7 +23,7 @@ public class VanitechRecipeSerializers {
     }
 
     private static <T extends RecipeSerializer<?>> RegistrySupplier<T> registerSerializer(String name,
-                                                                                          Supplier<T> serializer) {
+            Supplier<T> serializer) {
         return RECIPE_SERIALIZERS.register(name, serializer);
     }
 }

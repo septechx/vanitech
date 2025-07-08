@@ -1,17 +1,20 @@
 package com.siesque.ui.alloy_furnace;
 
 import com.siesque.ui.VanitechMenuTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.StackedItemContents;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
+public class AlloyBlastFurnaceMenu extends RecipeBookMenu {
     public final Container container;
     public final ContainerData data;
     protected Level level;
@@ -96,6 +99,10 @@ public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
+    public Slot getResultSlot() {
+        return this.slots.get(3);
+    }
+
     public float getBurnProgress() {
         int i = this.data.get(2);
         int j = this.data.get(3);
@@ -113,5 +120,21 @@ public class AlloyBlastFurnaceMenu extends AbstractContainerMenu {
 
     public boolean isFuel(ItemStack stack) {
         return this.level.fuelValues().isFuel(stack);
+    }
+
+    @Override
+    public @NotNull PostPlaceAction handlePlacement(boolean useMaxItems, boolean isCreative, RecipeHolder<?> recipe,
+            ServerLevel level, Inventory playerInventory) {
+        return null;
+    }
+
+    @Override
+    public void fillCraftSlotsStackedContents(StackedItemContents stackedItemContents) {
+
+    }
+
+    @Override
+    public @NotNull RecipeBookType getRecipeBookType() {
+        return RecipeBookType.BLAST_FURNACE;
     }
 }

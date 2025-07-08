@@ -3,7 +3,9 @@
   "package": "com.siesque.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
-  "client": [],
+  "client": [
+    "client.SearchRecipeBookCategoryMixin"
+  ],
   "mixins": [
     "AlloyBlastFurnaceBlockEntityMixin"
   ],

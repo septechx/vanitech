@@ -3,6 +3,7 @@ package com.siesque.ui;
 import com.siesque.Vanitech;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceMenu;
 import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreen;
+import com.siesque.ui.alloy_furnace.AlloyBlastFurnaceScreenImpl;
 import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -29,7 +30,7 @@ public class VanitechMenuTypes {
 
         if (Platform.isFabric()) {
             ClientLifecycleEvent.CLIENT_STARTED.register(client -> {
-                MenuRegistry.registerScreenFactory(ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreen::new);
+                MenuRegistry.<AlloyBlastFurnaceMenu, AlloyBlastFurnaceScreen>registerScreenFactory(ALLOY_BLAST_FURNACE.get(), AlloyBlastFurnaceScreenImpl::screen);
             });
         }
     }
