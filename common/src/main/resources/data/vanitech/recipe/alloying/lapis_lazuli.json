@@ -1,8 +1,8 @@
 {
   "type": "vanitech:alloying",
   "primary_ingredient": [
-    "minecraft:lapis_lazuli_ore",
-    "minecraft:deepslate_lapis_lazuli_ore"
+    "minecraft:lapis_ore",
+    "minecraft:deepslate_lapis_ore"
   ],
   "secondary_ingredient": "#minecraft:sand",
   "result": {

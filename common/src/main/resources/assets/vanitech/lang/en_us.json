@@ -12,9 +12,11 @@
   "item.vanitech.bronze_shovel": "Bronze Shovel",
   "item.vanitech.bronze_hoe": "Bronze Hoe",
   "item.vanitech.ender_key": "Ender Key",
+  "item.vanitech.emerald_coin": "Emerald Dime",
   "gui.recipebook.toggleRecipes.alloying": "Alloying Recipes",
   "advancement.vanitech.alloy_bronze": "Bronze Age",
   "advancement.vanitech.alloy_bronze.desc": "Obtain a bronze ingot",
   "advancement.vanitech.obtain_ender_key": "Obtain an Ender Key",
-  "advancement.vanitech.obtain_ender_key.desc": "Obtain an Ender Key to access the End"
+  "advancement.vanitech.obtain_ender_key.desc": "Obtain an Ender Key to access the End",
+  "entity.vanitech.villager.banker": "Banker"
 }

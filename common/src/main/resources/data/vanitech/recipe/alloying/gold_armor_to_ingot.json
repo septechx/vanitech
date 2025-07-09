@@ -1,10 +1,10 @@
 {
   "type": "vanitech:alloying",
   "primary_ingredient": [
-    "minecraft:gold_helmet",
-    "minecraft:gold_chestplate",
-    "minecraft:gold_leggings",
-    "minecraft:gold_boots"
+    "minecraft:golden_helmet",
+    "minecraft:golden_chestplate",
+    "minecraft:golden_leggings",
+    "minecraft:golden_boots"
   ],
   "secondary_ingredient": "#minecraft:sand",
   "result": {

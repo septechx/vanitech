@@ -20,6 +20,7 @@ public class VanitechItems {
 
     public static RegistrySupplier<Item> BRONZE_INGOT;
     public static RegistrySupplier<Item> BRONZE_NUGGET;
+    public static RegistrySupplier<Item> EMERALD_COIN;
 
     public static RegistrySupplier<Item> BRONZE_BLOCK;
 
@@ -39,6 +40,7 @@ public class VanitechItems {
     public static void init() {
         BRONZE_INGOT = item("bronze_ingot", CreativeModeTabs.INGREDIENTS);
         BRONZE_NUGGET = item("bronze_nugget", CreativeModeTabs.INGREDIENTS);
+        EMERALD_COIN = item("emerald_coin", CreativeModeTabs.INGREDIENTS);
 
         BRONZE_BLOCK = block("bronze_block", VanitechBlocks.BRONZE_BLOCK, CreativeModeTabs.BUILDING_BLOCKS);
 
