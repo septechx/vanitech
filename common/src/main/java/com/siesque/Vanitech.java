@@ -1,14 +1,14 @@
 package com.siesque;
 
 import com.siesque.blocks.VanitechBlocks;
+import com.siesque.entity.villager.VanitechPoiTypes;
+import com.siesque.entity.villager.VanitechTrades;
+import com.siesque.entity.villager.VanitechVillagerProfessions;
 import com.siesque.items.VanitechItems;
 import com.siesque.recipe.VanitechRecipeDisplayTypes;
 import com.siesque.recipe.VanitechRecipeSerializers;
 import com.siesque.recipe.VanitechRecipeTypes;
 import com.siesque.recipe_book.VanitechRecipeBookCategories;
-import com.siesque.trade.VanitechPoiTypes;
-import com.siesque.trade.VanitechTrades;
-import com.siesque.trade.VanitechVillagerProfessions;
 import com.siesque.ui.VanitechMenuTypes;
 import org.slf4j.Logger;
 

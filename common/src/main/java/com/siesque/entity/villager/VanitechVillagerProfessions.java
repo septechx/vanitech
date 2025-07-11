@@ -1,7 +1,8 @@
-package com.siesque.trade;
+package com.siesque.entity.villager;
 
 import com.google.common.collect.ImmutableSet;
 import com.siesque.Vanitech;
+import com.siesque.VanitechFlags;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
@@ -16,13 +17,15 @@ public class VanitechVillagerProfessions {
     public static RegistrySupplier<VillagerProfession> BANKER;
 
     public static void init() {
-        BANKER = VILLAGER_PROFESSIONS.register("banker", () -> new VillagerProfession(
-                Component.translatable("entity.vanitech.villager.banker"),
-                holder -> holder.is(VanitechPoiTypes.BANKER_KEY),
-                holder -> holder.is(VanitechPoiTypes.BANKER_KEY),
-                ImmutableSet.of(),
-                ImmutableSet.of(),
-                SoundEvents.VILLAGER_WORK_TOOLSMITH));
+        if (VanitechFlags.enableBanker) {
+            BANKER = VILLAGER_PROFESSIONS.register("banker", () -> new VillagerProfession(
+                    Component.translatable("entity.vanitech.villager.banker"),
+                    holder -> holder.is(VanitechPoiTypes.BANKER_KEY),
+                    holder -> holder.is(VanitechPoiTypes.BANKER_KEY),
+                    ImmutableSet.of(),
+                    ImmutableSet.of(),
+                    SoundEvents.VILLAGER_WORK_TOOLSMITH));
+        }
 
         VILLAGER_PROFESSIONS.register();
     }

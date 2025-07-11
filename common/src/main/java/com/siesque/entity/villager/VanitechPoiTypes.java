@@ -1,7 +1,8 @@
-package com.siesque.trade;
+package com.siesque.entity.villager;
 
 import com.google.common.collect.ImmutableSet;
 import com.siesque.Vanitech;
+import com.siesque.VanitechFlags;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -29,9 +30,11 @@ public class VanitechPoiTypes {
     }
 
     public static void initArchitectury() {
-        BANKER = POI_TYPES.register(BANKER_KEY.location(),
-                () -> new PoiType(ImmutableSet.copyOf(Blocks.ANVIL.getStateDefinition().getPossibleStates()),
-                        1, 1));
+        if (VanitechFlags.enableBanker) {
+            BANKER = POI_TYPES.register(BANKER_KEY.location(),
+                    () -> new PoiType(ImmutableSet.copyOf(Blocks.ANVIL.getStateDefinition().getPossibleStates()),
+                            1, 1));
+        }
 
         POI_TYPES.register();
 
