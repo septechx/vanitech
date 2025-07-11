@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 public class VanitechTags {
     public static final TagKey<Item> BRONZE_TOOL_MATERIALS = item("bronze_tool_materials");
     public static final TagKey<Item> REPAIRS_BRONZE_ARMOR = item("repairs_bronze_armor");
+    public static final TagKey<Item> ECHO_TOOL_MATERIALS = item("echo_tool_materials");
+    public static final TagKey<Item> REPAIRS_ECHO_ARMOR = item("repairs_echo_armor");
 
     public static TagKey<Item> item(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Vanitech.MOD_ID, name));

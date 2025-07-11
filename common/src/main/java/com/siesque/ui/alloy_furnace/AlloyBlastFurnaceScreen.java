@@ -1,5 +1,6 @@
 package com.siesque.ui.alloy_furnace;
 
+import com.siesque.Vanitech;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.client.gui.screens.inventory.AbstractRecipeBookScreen;
@@ -14,12 +15,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class AlloyBlastFurnaceScreen extends AbstractRecipeBookScreen<AlloyBlastFurnaceMenu> {
-    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("vanitech",
-            "textures/gui/alloy_furnace.png");
-    private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath("vanitech",
-            "lit_progress");
-    private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.fromNamespaceAndPath("vanitech",
-            "burn_progress");
+    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(Vanitech.MOD_ID, "textures/gui/alloy_furnace.png");
+    private static final ResourceLocation LIT_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("lit_progress");
+    private static final ResourceLocation BURN_PROGRESS_SPRITE = ResourceLocation.withDefaultNamespace("burn_progress");
 
     public AlloyBlastFurnaceScreen(AlloyBlastFurnaceMenu menu, Inventory playerInventory, Component title,
                                    Component recipeFilterName,

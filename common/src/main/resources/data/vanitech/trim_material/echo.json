@@ -1,0 +1,9 @@
+{
+  "asset_name": "echo",
+  "description": {
+    "color": "#034150",
+    "translate": "trim_material.vanitech.echo"
+  },
+  "ingredient": "minecraft:echo_shard",
+  "item_model_index": 1.0
+}

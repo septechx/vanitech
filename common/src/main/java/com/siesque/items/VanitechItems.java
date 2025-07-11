@@ -13,6 +13,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class VanitechItems {
@@ -29,13 +30,24 @@ public class VanitechItems {
     public static RegistrySupplier<Item> BRONZE_AXE;
     public static RegistrySupplier<Item> BRONZE_SHOVEL;
     public static RegistrySupplier<Item> BRONZE_HOE;
+    public static RegistrySupplier<Item> ECHO_SWORD;
+    public static RegistrySupplier<Item> ECHO_PICKAXE;
+    public static RegistrySupplier<Item> ECHO_AXE;
+    public static RegistrySupplier<Item> ECHO_SHOVEL;
+    public static RegistrySupplier<Item> ECHO_HOE;
 
     public static RegistrySupplier<Item> BRONZE_HELMET;
     public static RegistrySupplier<Item> BRONZE_CHESTPLATE;
     public static RegistrySupplier<Item> BRONZE_LEGGINGS;
     public static RegistrySupplier<Item> BRONZE_BOOTS;
+    public static RegistrySupplier<Item> ECHO_HELMET;
+    public static RegistrySupplier<Item> ECHO_CHESTPLATE;
+    public static RegistrySupplier<Item> ECHO_LEGGINGS;
+    public static RegistrySupplier<Item> ECHO_BOOTS;
 
     public static RegistrySupplier<Item> ENDER_KEY;
+
+    public static RegistrySupplier<Item> ECHO_UPGRADE_TRIM;
 
     public static void init() {
         BRONZE_INGOT = item("bronze_ingot", CreativeModeTabs.INGREDIENTS);
@@ -49,27 +61,32 @@ public class VanitechItems {
         BRONZE_AXE = axe("bronze_axe", VanitechToolMaterials.BRONZE, 5.5f, -3.0f);
         BRONZE_SHOVEL = shovel("bronze_shovel", VanitechToolMaterials.BRONZE, 2.0f, -3.0f);
         BRONZE_HOE = hoe("bronze_hoe", VanitechToolMaterials.BRONZE, 0.5f, -2.0f);
+        ECHO_SWORD = sword("echo_sword", VanitechToolMaterials.ECHO, 4.5f, -2.4f);
+        ECHO_PICKAXE = pickaxe("echo_pickaxe", VanitechToolMaterials.ECHO, 2.5f, -2.8f);
+        ECHO_AXE = axe("echo_axe", VanitechToolMaterials.ECHO, 5.5f, -3.0f);
+        ECHO_SHOVEL = shovel("echo_shovel", VanitechToolMaterials.ECHO, 2.0f, -3.0f);
+        ECHO_HOE = hoe("echo_hoe", VanitechToolMaterials.ECHO, 0.5f, -2.0f);
 
         BRONZE_HELMET = armor("bronze_helmet", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.HELMET);
         BRONZE_CHESTPLATE = armor("bronze_chestplate", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.CHESTPLATE);
         BRONZE_LEGGINGS = armor("bronze_leggings", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.LEGGINGS);
         BRONZE_BOOTS = armor("bronze_boots", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.BOOTS);
+        ECHO_HELMET = armor("echo_helmet", VanitechArmorMaterials.ECHO_ARMOR_MATERIAL, ArmorType.HELMET);
+        ECHO_CHESTPLATE = armor("echo_chestplate", VanitechArmorMaterials.ECHO_ARMOR_MATERIAL, ArmorType.CHESTPLATE);
+        ECHO_LEGGINGS = armor("echo_leggings", VanitechArmorMaterials.ECHO_ARMOR_MATERIAL, ArmorType.LEGGINGS);
+        ECHO_BOOTS = armor("echo_boots", VanitechArmorMaterials.ECHO_ARMOR_MATERIAL, ArmorType.BOOTS);
 
-        ENDER_KEY = custom("ender_key", EnderKeyItem.class, CreativeModeTabs.TOOLS_AND_UTILITIES, Rarity.RARE);
+        ENDER_KEY = custom("ender_key", EnderKeyItem::new, CreativeModeTabs.TOOLS_AND_UTILITIES, Rarity.RARE);
+
+        ECHO_UPGRADE_TRIM = custom("echo_upgrade_smithing_template", VanitechSmithingItems::createEchoUpgradeTemplate,
+                CreativeModeTabs.TOOLS_AND_UTILITIES, Rarity.RARE);
 
         ITEMS.register();
     }
 
-    public static RegistrySupplier<Item> custom(String name, Class<? extends Item> itemClass,
+    public static RegistrySupplier<Item> custom(String name, Function<Item.Properties, ? extends Item> createItem,
                                                 ResourceKey<CreativeModeTab> tab, Rarity rarity) {
-        return registerItem(name, () -> {
-            try {
-                return itemClass.getConstructor(Item.Properties.class).newInstance(baseProperties(name).arch$tab(tab).rarity(rarity));
-            } catch (Exception e) {
-                Vanitech.LOGGER.error("Failed to create item: {}", name);
-                throw new RuntimeException(e);
-            }
-        });
+        return registerItem(name, () -> createItem.apply(baseProperties(name).arch$tab(tab).rarity(rarity)));
     }
 
     public static RegistrySupplier<Item> item(String name, ResourceKey<CreativeModeTab> tab) {

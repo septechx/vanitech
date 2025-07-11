@@ -11,6 +11,15 @@
   "item.vanitech.bronze_axe": "Bronze Axe",
   "item.vanitech.bronze_shovel": "Bronze Shovel",
   "item.vanitech.bronze_hoe": "Bronze Hoe",
+  "item.vanitech.echo_helmet": "Echo Helmet",
+  "item.vanitech.echo_chestplate": "Echo Chestplate",
+  "item.vanitech.echo_leggings": "Echo Leggings",
+  "item.vanitech.echo_boots": "Echo Boots",
+  "item.vanitech.echo_sword": "Echo Sword",
+  "item.vanitech.echo_pickaxe": "Echo Pickaxe",
+  "item.vanitech.echo_axe": "Echo Axe",
+  "item.vanitech.echo_shovel": "Echo Shovel",
+  "item.vanitech.echo_hoe": "Echo Hoe",
   "item.vanitech.ender_key": "Ender Key",
   "item.vanitech.emerald_coin": "Emerald Dime",
   "gui.recipebook.toggleRecipes.alloying": "Alloying Recipes",
@@ -18,5 +27,10 @@
   "advancement.vanitech.alloy_bronze.desc": "Obtain a bronze ingot",
   "advancement.vanitech.obtain_ender_key": "Obtain an Ender Key",
   "advancement.vanitech.obtain_ender_key.desc": "Obtain an Ender Key to access the End",
-  "entity.vanitech.villager.banker": "Banker"
+  "entity.vanitech.villager.banker": "Banker",
+  "item.vanitech.smithing_template.echo_upgrade.applies_to": "Netherite Equipment",
+  "item.vanitech.smithing_template.echo_upgrade.ingredients": "Echo Shard",
+  "item.vanitech.smithing_template.echo_upgrade.base_slot_description": "Add Netherite Armor, Weapon, or Tool",
+  "item.vanitech.smithing_template.echo_upgrade.additions_slot_description": "Add Echo Shard",
+  "upgrade.vanitech.echo_upgrade": "Echo Upgrade"
 }

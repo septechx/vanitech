@@ -16,6 +16,9 @@ public class VanitechArmorMaterials {
     public static final ResourceKey<EquipmentAsset> BRONZE_ARMOR_MATERIAL_KEY = ResourceKey.create(
             EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vanitech.MOD_ID, "bronze")
     );
+    public static final ResourceKey<EquipmentAsset> ECHO_ARMOR_MATERIAL_KEY = ResourceKey.create(
+            EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vanitech.MOD_ID, "echo")
+    );
 
     public static final ArmorMaterial BRONZE_ARMOR_MATERIAL = new ArmorMaterial(
             24, // Durability
@@ -31,5 +34,21 @@ public class VanitechArmorMaterials {
             0.05f, // Knockback resistance
             VanitechTags.REPAIRS_BRONZE_ARMOR,
             BRONZE_ARMOR_MATERIAL_KEY
+    );
+
+    public static final ArmorMaterial ECHO_ARMOR_MATERIAL = new ArmorMaterial(
+            150,
+            Map.of(
+                    ArmorType.HELMET, 3,
+                    ArmorType.CHESTPLATE, 8,
+                    ArmorType.LEGGINGS, 6,
+                    ArmorType.BOOTS, 3
+            ),
+            18,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            5.0f,
+            0.20f,
+            VanitechTags.REPAIRS_ECHO_ARMOR,
+            ECHO_ARMOR_MATERIAL_KEY
     );
 }
