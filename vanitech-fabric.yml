@@ -1,0 +1,11 @@
+id: "vanitech"
+name: "Vanitech"
+git: "https://github.com/septechx/vanitech.git"
+branch: "1.21.7"
+build: Std
+out: "dir:@/fabric/build/libs"
+exclude:
+  - type: Ends
+    value: "-sources.jar"
+  - type: Ends
+    value: "-shadow.jar"
