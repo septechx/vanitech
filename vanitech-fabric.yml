@@ -1,7 +1,7 @@
 id: "vanitech"
 name: "Vanitech"
 git: "https://github.com/septechx/vanitech.git"
-branch: "1.21.7"
+branch: "1.21.8"
 build: Std
 out: "dir:@/fabric/build/libs"
 exclude:
