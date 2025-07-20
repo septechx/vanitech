@@ -1,6 +1,7 @@
 package com.siesque.items;
 
 import com.siesque.Vanitech;
+import com.siesque.VanitechFlags;
 import com.siesque.blocks.VanitechBlocks;
 import com.siesque.items.equipment.VanitechArmorMaterials;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -40,8 +41,7 @@ public class VanitechItems {
     public static void init() {
         BRONZE_INGOT = item("bronze_ingot", CreativeModeTabs.INGREDIENTS);
         BRONZE_NUGGET = item("bronze_nugget", CreativeModeTabs.INGREDIENTS);
-        EMERALD_COIN = item("emerald_coin", CreativeModeTabs.INGREDIENTS);
-
+        
         BRONZE_BLOCK = block("bronze_block", VanitechBlocks.BRONZE_BLOCK, CreativeModeTabs.BUILDING_BLOCKS);
 
         BRONZE_SWORD = sword("bronze_sword", VanitechToolMaterials.BRONZE, 4.5f, -2.4f);
@@ -56,6 +56,9 @@ public class VanitechItems {
         BRONZE_BOOTS = armor("bronze_boots", VanitechArmorMaterials.BRONZE_ARMOR_MATERIAL, ArmorType.BOOTS);
 
         ENDER_KEY = custom("ender_key", EnderKeyItem.class, CreativeModeTabs.TOOLS_AND_UTILITIES, Rarity.RARE);
+
+        if (VanitechFlags.enableVillagerTradingChanges)
+            EMERALD_COIN = item("emerald_coin", CreativeModeTabs.INGREDIENTS);
 
         ITEMS.register();
     }

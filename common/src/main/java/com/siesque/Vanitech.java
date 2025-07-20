@@ -27,9 +27,10 @@ public final class Vanitech {
 
         VanitechMenuTypes.init();
 
-        VanitechPoiTypes.init();
-        VanitechVillagerProfessions.init();
-
-        VanitechTrades.init();
+        if (VanitechFlags.enableVillagerTradingChanges) {
+            VanitechPoiTypes.init();
+            VanitechVillagerProfessions.init();
+            VanitechTrades.init();
+        }
     }
 }
